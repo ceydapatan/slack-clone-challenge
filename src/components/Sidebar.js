@@ -12,7 +12,7 @@ function Sidebar(props) {
 
     const goToChannel = (id) =>{
            if(id){
-               history.push()
+               history.push(`/room/${id}`)
 
            }
     }
@@ -57,7 +57,7 @@ function Sidebar(props) {
                  <ChannelsList>
                      {
                          props.rooms.map(item => (
-                            <Channel>
+                            <Channel onClick = {() => goToChannel(item.id)}>
                                 # {item.name}
                             </Channel>
 

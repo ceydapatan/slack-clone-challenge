@@ -25,6 +25,7 @@ const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
    }))
   })
 }
+
  const signOut= () => {
    auth.signOut().then(() => {
      localStorage.removeItem('user');
@@ -50,12 +51,12 @@ const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
             <Sidebar rooms={rooms}/>
         <Switch>
           <Route path="/room/:channelId">
-             <Chat />
+             <Chat user={user}/>
           </Route>
-          <Route  path= "/">
+          <Route path= "/">
             Select or Create Channel
           </Route>
-          
+      
         </Switch>
         </Main>
         </Container>
