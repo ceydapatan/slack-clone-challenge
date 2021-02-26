@@ -28,7 +28,7 @@ function Sidebar(props) {
         <Container>
             <WorkspaceContainer>
                 <Name>
-                    CleverProgrammer
+                    Ceyda's Workspace
                 </Name>
                 <NewMessage>
                   <AddCircleOutlineIcon />
