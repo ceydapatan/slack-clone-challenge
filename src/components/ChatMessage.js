@@ -47,6 +47,7 @@ img{
 
 const MessageContent = styled.div `
 display: flex;
+
 flex-direction: column;
 
 `
