@@ -50,6 +50,10 @@ display: flex;
 
 flex-direction: column;
 
+:hover{
+    background: rgb(60,80,98);;
+}
+
 `
 
 const Name = styled.span `
