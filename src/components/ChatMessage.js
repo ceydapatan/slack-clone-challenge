@@ -13,7 +13,7 @@ function ChatMessage({text,name,image,timestamp}) {
                     <span>{new Date(timestamp.toDate()).toUTCString()}</span>
                 </Name>
                 <Text>
-                    This is the best Challenge
+                    {text}
                 </Text>
             </MessageContent>
         </Container>
