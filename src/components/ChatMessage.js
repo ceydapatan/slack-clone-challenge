@@ -50,10 +50,14 @@ display: flex;
 
 flex-direction: column;
 
+
+
 :hover{
  background: #F8F8FF
 
 }
+
+
 
 `
 

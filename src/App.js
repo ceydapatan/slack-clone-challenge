@@ -1,5 +1,10 @@
 import './App.css';
-import {useEffect, useState} from 'react'
+import {ThemeProvider} from "styled-components";
+import  {useDarkMode} from "./components/useDarkMode"
+import { GlobalStyles } from "./components/GlobalStyles";
+import { Toggle } from "./components/Toggle";
+import { lightTheme, darkTheme } from "./components/Theme"
+import {useEffect, useState, Component} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Chat from './components/Chat'
 import Login from './components/Login'
@@ -10,7 +15,13 @@ import db from './firebase'
 import {auth, provider} from './firebase'
 
 
+
 function App() {
+
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+}
 
 const [rooms,setRooms] = useState([])
 const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -37,8 +48,16 @@ const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
   useEffect(() => {
     getChannels();
   }, []) 
+
+  
+  
   return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <>
+    <GlobalStyles/>
     <div className="App">
+    <button onClick={themeToggler}>Switch Theme</button>
+
       <Router>
         {
           !user ?
@@ -65,6 +84,8 @@ const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
       </Router>
      
     </div>
+    </>
+    </ThemeProvider>
   );
 }
 
