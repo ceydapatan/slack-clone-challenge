@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import styled from 'styled-components'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 import ChatInput from './ChatInput'
@@ -24,6 +24,8 @@ function Chat({ user }) {
         .onSnapshot((snapshot) => {
             let messages = snapshot.docs.map((doc) => doc.data());
             setMessages(messages);
+            window.scrollTo(400, 400);
+
 
         })
     }
@@ -37,8 +39,16 @@ function Chat({ user }) {
                    userImage: user.photo
                }
                db.collection('rooms').doc(channelId).collection('messages').add(payload);
+               window.scrollTo(400, 400);
+
            }
     }
+
+    const dummy = useRef();
+
+    useEffect(() => {
+      dummy.current.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
 
     const getChannel = () => {
         db.collection('rooms')
@@ -88,9 +98,13 @@ function Chat({ user }) {
                         />
                     ))
                 }
+                 <span ref={dummy}></span>
             </MessageContainer>
 
-            <ChatInput sendMessage={sendMessage}/>
+            <ChatInput sendMessage={sendMessage}
+            lol= {
+                window.scrollTo(0,document.body.scrollHeight)
+            }/>
  
         </Container>
     

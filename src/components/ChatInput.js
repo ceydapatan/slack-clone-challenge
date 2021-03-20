@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import SendIcon from '@material-ui/icons/Send'
+import Chat from './Chat'
 
 function ChatInput({sendMessage}) {
 
@@ -11,7 +12,10 @@ function ChatInput({sendMessage}) {
         if(!input) return;
         sendMessage(input);
         setInput("");
+   
     }
+
+
     return (
         <Container>
         <InputContainer>
